@@ -23,8 +23,6 @@ Route::get('/register-page', function () {
 
 /* Les routes protégés */
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
-
-    Route::get('/dashboard', function () {
-        return Inertia\Inertia::render('Home');
-    })->name('dashboard');
+    Route::inertia('/dashboard', 'Home')->name('dashboard');
+    Route::inertia('/user', 'Profile/Show')->name('user.show');
 });

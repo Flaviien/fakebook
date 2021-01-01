@@ -1,7 +1,6 @@
 <template>
     <app-layout>
         <div>
-            Dashbord
         </div>
     </app-layout>
 </template>

@@ -12,6 +12,7 @@ Vue.mixin({ methods: { route } });
 Vue.use(InertiaApp);
 Vue.use(InertiaForm);
 Vue.use(PortalVue);
+Vue.prototype.$route = route
 
 const app = document.getElementById('app');
 
