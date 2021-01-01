@@ -14,5 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
+})->name('login-page');
+
+Route::get('/register-page', function () {
+    return view('auth/register');
+})->name('register-page');
+
+/* Les routes protégés */
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+
+    Route::get('/dashboard', function () {
+        return Inertia\Inertia::render('Home');
+    })->name('dashboard');
 });

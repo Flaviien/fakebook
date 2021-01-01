@@ -1,0 +1,25 @@
+<template>
+    <app-layout>
+        <div>
+            Dashbord
+        </div>
+    </app-layout>
+</template>
+
+<script>
+    import AppLayout from '@/Layouts/AppLayout'
+
+    export default {
+        components: {
+            AppLayout
+        },
+
+        data() {
+            return {
+            }
+        }
+    }
+</script>
+
+<style scoped>
+</style>
