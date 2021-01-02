@@ -12,6 +12,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: 'Roboto',
+                segoe: 'Segoe UI',
             },
             minWidth: {
                 '0': '0',
@@ -20,7 +21,26 @@ module.exports = {
                 '1/2': '50%',
                 '3/4': '75%',
                 'full': '100%',
-               }
+                '80': '20rem',
+                '88': '22rem',
+                '96': '24rem'
+            },
+            screens: {
+                '2xl': '1280px',
+                // => @media (max-width: 1535px) { ... }
+          
+                'xl': {'max': '1279px'},
+                // => @media (max-width: 1279px) { ... }
+          
+                'lg': {'max': '1023px'},
+                // => @media (max-width: 1023px) { ... }
+          
+                'md': {'max': '767px'},
+                // => @media (max-width: 767px) { ... }
+          
+                'sm': {'max': '639px'},
+                // => @media (max-width: 639px) { ... }
+              }
         },
     },
 

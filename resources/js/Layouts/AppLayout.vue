@@ -11,7 +11,7 @@
 <script>
     import HeaderApp from '@/Incs/Header';
 
-export default {
+    export default {
         components: {
             HeaderApp
         },
