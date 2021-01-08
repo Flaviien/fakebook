@@ -1,17 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\PublicationController;
 
 Route::get('/', function () {
     return view('auth/login');
@@ -23,6 +14,8 @@ Route::get('/register-page', function () {
 
 /* Les routes protégés */
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
-    Route::inertia('/dashboard', 'Home')->name('dashboard');
+    /* Route::inertia('/dashboard', [PublicationController::class, 'index'])->name('dashboard'); */
+    Route::get('/dashboard', [PublicationController::class, 'index'])->name('dashboard');
     Route::inertia('/user', 'Profile/Show')->name('user.show');
+    Route::post('/publication/store', [PublicationController::class, 'store'])->name('publication.store');
 });

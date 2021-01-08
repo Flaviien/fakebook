@@ -40,7 +40,11 @@ module.exports = {
           
                 'sm': {'max': '639px'},
                 // => @media (max-width: 639px) { ... }
-              }
+            },
+            margin: {
+                ycenter: 'auto 0',
+                xcenter: '0 auto'
+            }
         },
     },
 

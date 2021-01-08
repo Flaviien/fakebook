@@ -1,6 +1,6 @@
 <template>
-    <header class="flex justify-between content-center py-2 px-4 bg-white shadow">
-        <div class="flex">
+    <header class="flex justify-between content-center py-1 px-4 bg-white shadow mb-4">
+        <div class="flex items-center">
             <a :href="$route('dashboard')"><img id="logo" src="/img/fakebook-rounded.svg" alt="Logo Fakebook rond" class="mr-2"></a>
             <div id="search-bar" class="flex bg-gray-200 rounded-full items-center pl-3 xl:hidden">
                 <img src="/img/nav/search.svg" alt="Logo bouton de recherche" class="item-center svg-size mr-2">
@@ -8,17 +8,17 @@
             </div>
         </div>
 
-        <nav class="flex justify-around items-center 2xl:w-full xl:w-2/5 lg:w-1/3 md:w-1/4">
-            <a class="flex w-1/5 h-full hover:bg-gray-200 rounded" href="#"><img class="mx-center" src="/img/nav/accueil.svg" alt="Logo Accueil"></a>
-            <a class="flex w-1/5 h-full hover:bg-gray-200 rounded" href="#"><img class="mx-center" src="/img/nav/amis.svg" alt="Logo Amis"></a>
-            <a class="flex w-1/5 h-full hover:bg-gray-200 rounded" href="#"><img class="mx-center" src="/img/nav/watch.svg" alt="Logo Watch"></a>
-            <a class="flex w-1/5 h-full hover:bg-gray-200 rounded" href="#"><img class="mx-center" src="/img/nav/marketplace.svg" alt="Logo Marketplace"></a>
-            <a class="flex w-1/5 h-full hover:bg-gray-200 rounded" href="#"><img class="mx-center" src="/img/nav/groupes.svg" alt="Logo Groupes"></a>
+        <nav class="flex 2xl:w-full xl:w-2/5 lg:w-1/3 md:w-1/4">
+            <a class="flex justify-center w-1/5 h-full hover:bg-gray-200 rounded" :href="$route('dashboard')"><img class="mx-center" src="/img/nav/accueil.svg" alt="Logo Accueil"></a>
+            <a class="flex justify-center w-1/5 h-full hover:bg-gray-200 rounded" href="#"><img class="mx-center" src="/img/nav/amis.svg" alt="Logo Amis"></a>
+            <a class="flex justify-center w-1/5 h-full hover:bg-gray-200 rounded" href="#"><img class="mx-center" src="/img/nav/watch.svg" alt="Logo Watch"></a>
+            <a class="flex justify-center w-1/5 h-full hover:bg-gray-200 rounded" href="#"><img class="mx-center" src="/img/nav/marketplace.svg" alt="Logo Marketplace"></a>
+            <a class="flex justify-center w-1/5 h-full hover:bg-gray-200 rounded" href="#"><img class="mx-center" src="/img/nav/groupes.svg" alt="Logo Groupes"></a>
         </nav>
         
-        <ul class="flex justify-end w-1/6">
-            <li class="xl:hidden my-center rounded-full hover:bg-gray-200 p-1 pr-2 ml-2"><inertia-link class="flex items-center" :href="$route('user.show')">
-                <img id="profile-picture" class="rounded-full mr-2" :src="$page.user.profile_photo_url" alt="Photo de profil">
+        <ul class="flex items-center justify-end w-1/6">
+            <li class="xl:hidden rounded-full hover:bg-gray-200 p-1 pr-2 ml-2"><inertia-link class="flex items-center" :href="$route('user.show')">
+                <img class="profile-picture rounded-full mr-2" :src="$page.user.profile_photo_url" alt="Photo de profil">
                 {{ $page.user.name }}
                 </inertia-link>
             </li>
@@ -26,12 +26,12 @@
             <li class="ml-2">
                 <jet-dropdown width="96">
                     <template #trigger>
-                        <a href="#"><div class="border rounded-full bg-gray-200 hover:bg-gray-300 p-2"><img class="svg-size" src="/img/nav/plus.svg" alt="Logo Créer"></div></a>
+                        <a href="#"><div class="rounded-full bg-gray-200 hover:bg-gray-300 p-2"><img class="svg-size" src="/img/nav/plus.svg" alt="Logo Créer"></div></a>
                     </template>
                     <template #content>
                         <div class="dropdown">
                             <h3 class="font-bold text-2xl">Créer</h3>
-                            <jet-dropdown-link href="#" class=" rounded-2xl">
+                            <a class="cursor-pointer block px-2 py-2 text-sm leading-5 text-gray-700 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" @click="openPublicationModal">
                                 <div class="flex items-center">
                                     <div class="logo-size bg-gray-200 rounded-full p-2 mr-2">
                                         <img class="inline" src="/img/nav/logos-png/logo1.png" alt="">
@@ -41,7 +41,7 @@
                                         <p class="text-sm">Partagez une publication sur le fil d'actualité.</p>
                                     </div>
                                 </div>
-                            </jet-dropdown-link>
+                            </a>
                             
                             <jet-dropdown-link href="#">
                                 <div class="flex items-center">
@@ -135,7 +135,7 @@
             <li class="ml-2">
                 <jet-dropdown width="96">
                 <template #trigger>
-                    <a href="#"><div class="border rounded-full bg-gray-200 hover:bg-gray-300 p-2"><img class="svg-size" src="/img/nav/messenger.svg" alt="Logo Messenger"></div></a>
+                    <a href="#"><div class="rounded-full bg-gray-200 hover:bg-gray-300 p-2"><img class="svg-size" src="/img/nav/messenger.svg" alt="Logo Messenger"></div></a>
                 </template>
                     <template #content>
                         <div class="dropdown">
@@ -167,7 +167,7 @@
             <li class="ml-2">
                 <jet-dropdown width="96">
                     <template #trigger>
-                        <a href="#"><div class="border rounded-full bg-gray-200 hover:bg-gray-300 p-2"><img class="svg-size" src="/img/nav/notifications.svg" alt="Logo Notifications"></div></a>
+                        <a href="#"><div class="rounded-full bg-gray-200 hover:bg-gray-300 p-2"><img class="svg-size" src="/img/nav/notifications.svg" alt="Logo Notifications"></div></a>
                     </template>
                     <template #content>
                         <div class="dropdown">
@@ -236,7 +236,7 @@
             <li class="ml-1">
                 <jet-dropdown width="96">
                     <template #trigger>
-                        <a href="#"><div class="border rounded-full bg-gray-200 hover:bg-gray-300 p-2"><img class="svg-size" src="/img/nav/caret-down.svg" alt="Logo Compte"></div></a>
+                        <a href="#"><div class="rounded-full bg-gray-200 hover:bg-gray-300 p-2"><img class="svg-size" src="/img/nav/caret-down.svg" alt="Logo Compte"></div></a>
                     </template>
                     <template #content>
                         <div class="dropdown">
@@ -257,7 +257,7 @@
                                     </div>
                                     <div>
                                         <p class="font-bold">Donner votre avis</p>
-                                        <p class="text-sm">Aidez-nous à améliorer la nouvelle version de Facebook.</p>
+                                        <p class="text-sm">Aidez-nous à améliorer la nouvelle version de Fakebook.</p>
                                     </div>
                                 </div>
                             </jet-dropdown-link>
@@ -286,7 +286,7 @@
                                     <p class="font-bold">Préférences d'affichage</p>
                                 </div>
                             </jet-dropdown-link>
-                            <jet-dropdown-link href="#" class=" rounded-2xl">
+                            <jet-dropdown-link :href="$route('logout')" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class=" rounded-2xl">
                                 <div class="flex items-center">
                                     <div class="logo-size bg-gray-200 rounded-full p-2 mr-2">
                                         <img class="inline" src="/img/nav/logos-png/logo16.png" alt="">
@@ -294,6 +294,9 @@
                                     <p class="font-bold">Se déconnecter</p>
                                 </div>
                             </jet-dropdown-link>
+                            <form id="logout-form" method="POST" :action="$route('logout')">
+                                <input type="hidden" name="_token" :value="$props.csrf_token">
+                            </form>
                         </div>
                     </template>
                 </jet-dropdown>
@@ -306,6 +309,7 @@
     import JetDropdown from '@/Jetstream/Dropdown';
     import JetDropdownLink from '@/Jetstream/DropdownLink';
     import JetNavLink from '@/Jetstream/NavLink';
+    import Lib from '@/mixins/Lib';
 
     export default {
         components: {
@@ -313,9 +317,36 @@
             JetDropdownLink,
             JetNavLink
         },
+        mixins: [Lib],
+        props: {
+            csrf_token: String
+        },
+        data() {
+            return {
+                csrf: Lib.methods.getCookie('XSRF-TOKEN')
+            }
+        },
+        methods: {
+            logout() {
+                this.$inertia.post('/logout', {
+                    _token: this.$props.csrf_token
+                })
+            },
+            openPublicationModal() {
+                this.$emit('openPublicationModal')
+            }
+        }
     }
 </script>
 <style scoped>
+    header {
+        height: 56px;    
+    }
+
+    #search-bar{
+        height: 40px;
+    }
+
     #logo {
         width: 40px;
         min-width: 40px;
@@ -330,19 +361,11 @@
         min-height: 20px;
     }
 
-    #profile-picture {
+    .profile-picture {
         width: 30px;
         min-width: 30px;
         height: 30px;
         min-height: 30px;
-    }
-
-    .my-center{
-        margin: auto 0;
-    }
-
-    .mx-center{
-        margin: 0 auto;
     }
 
     /* Dropdowns */
