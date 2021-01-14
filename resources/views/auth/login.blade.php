@@ -12,7 +12,7 @@
                     class="flex flex-col bg-white shadow-2xl rounded-lg p-5">
                     @csrf
                     <input type="text" name="email" class="border rounded-lg mb-4 p-4" placeholder="Adresse e-mail"
-                        autofocus value="test@gmail.com">
+                        autofocus value="">
                     <input type="password" name="password" class="border rounded-lg mb-4 p-4" placeholder="Mot de passe"
                         value="password">
 

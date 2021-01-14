@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\PublicationController;
 
@@ -16,6 +17,8 @@ Route::get('/register-page', function () {
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     /* Route::inertia('/dashboard', [PublicationController::class, 'index'])->name('dashboard'); */
     Route::get('/dashboard', [PublicationController::class, 'index'])->name('dashboard');
-    Route::inertia('/user', 'Profile/Show')->name('user.show');
+    Route::inertia('/user', 'Profile/Settings')->name('user.settings');
+    Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
+    Route::put('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
     Route::post('/publication/store', [PublicationController::class, 'store'])->name('publication.store');
 });

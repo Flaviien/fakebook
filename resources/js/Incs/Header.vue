@@ -1,5 +1,5 @@
 <template>
-    <header class="flex justify-between content-center py-1 px-4 bg-white shadow mb-4">
+    <header class="flex justify-between content-center py-1 px-4 bg-white shadow">
         <div class="flex items-center">
             <a :href="$route('dashboard')"><img id="logo" src="/img/fakebook-rounded.svg" alt="Logo Fakebook rond" class="mr-2"></a>
             <div id="search-bar" class="flex bg-gray-200 rounded-full items-center pl-3 xl:hidden">
@@ -17,9 +17,9 @@
         </nav>
         
         <ul class="flex items-center justify-end w-1/6">
-            <li class="xl:hidden rounded-full hover:bg-gray-200 p-1 pr-2 ml-2"><inertia-link class="flex items-center" :href="$route('user.show')">
+            <li class="xl:hidden rounded-full bg-blue-50 hover:bg-blue-100 p-1 pr-2 ml-2"><inertia-link class="flex items-center" :href="$route('user.show', $page.user.id)">
                 <img class="profile-picture rounded-full mr-2" :src="$page.user.profile_photo_url" alt="Photo de profil">
-                {{ $page.user.name }}
+                {{ $page.user.firstname }}
                 </inertia-link>
             </li>
 
@@ -240,7 +240,7 @@
                     </template>
                     <template #content>
                         <div class="dropdown">
-                            <jet-dropdown-link href="#" class=" rounded-2xl">
+                            <jet-dropdown-link :href="$route('user.show', $page.user.id)" class=" rounded-2xl">
                                 <div class="flex">
                                         <img class="notif-profile-picture rounded-full mr-2" :src="$page.user.profile_photo_url" alt="">
                                         <div>
@@ -262,7 +262,7 @@
                                 </div>
                             </jet-dropdown-link>
                             <hr class="my-2">
-                            <jet-dropdown-link href="#" class=" rounded-2xl">
+                            <jet-dropdown-link :href="$route('user.settings')" class=" rounded-2xl">
                                 <div class="flex items-center">
                                     <div class="logo-size bg-gray-200 rounded-full p-2 mr-2">
                                         <img class="inline" src="/img/nav/logos-png/logo13.png" alt="">
@@ -325,6 +325,8 @@
             return {
                 csrf: Lib.methods.getCookie('XSRF-TOKEN')
             }
+        },
+        mounted() {
         },
         methods: {
             logout() {

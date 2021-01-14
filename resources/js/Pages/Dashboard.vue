@@ -5,7 +5,7 @@
                 <div class="stories w-full">
                     <!-- Stories -->
                 </div>
-                <div class="w-full shadow bg-white rounded-lg mb-3">
+                <div class="w-full shadow bg-white rounded-lg mt-4 mb-3">
                     <div class="flex m-4">
                         <img class="profile-picture rounded-full mr-3" :src="$page.user.profile_photo_url" alt="">
                         <button class="bg-gray-100 rounded-full w-full text-left pl-4" @click='modalData = true'>Que voulez-vous dire, {{ $page.user.name }} ?</button>
