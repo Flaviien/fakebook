@@ -10,7 +10,6 @@
                         <img class="profile-picture rounded-full mr-3" :src="$page.user.profile_photo_url" alt="">
                         <button class="bg-gray-100 rounded-full w-full text-left pl-4" @click='modalData = true'>Que voulez-vous dire, {{ $page.user.name }} ?</button>
                     </div>
-                    <hr class="my-2 mx-4">
                 </div>
                 <div class="w-full" v-for="(publication, index) in publications" :key="index">
                     <publication-card :publication="publications[index]" :user="users[publications[index].user_id-1]"></publication-card>

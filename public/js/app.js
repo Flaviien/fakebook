@@ -3693,7 +3693,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4089,6 +4088,38 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Components_PublicationCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Components/PublicationCard */ "./resources/js/Components/PublicationCard.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4144,12 +4175,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
+    PublicationCard: _Components_PublicationCard__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: {
-    csrf_token: String
+    csrf_token: String,
+    publications: Array
   },
   data: function data() {
     return {
@@ -4754,7 +4788,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container[data-v-348d746c] {\n  width: 940px;\n}\n.cover-picture[data-v-348d746c] {\n  height: 350px;\n}\n.profile-picture[data-v-348d746c] {\n  width: 168px;\n  height: 168px;\n}\n", ""]);
+exports.push([module.i, ".container[data-v-348d746c] {\n  width: 940px;\n}\n.cover-picture[data-v-348d746c] {\n  height: 350px;\n}\n.main-profile-picture[data-v-348d746c] {\n  width: 168px;\n  height: 168px;\n}\n.profile-picture[data-v-348d746c] {\n  width: 40px;\n  min-width: 40px;\n  height: 40px;\n  min-height: 40px;\n}\n", ""]);
 
 // exports
 
@@ -49649,9 +49683,7 @@ var render = function() {
                       )
                     ]
                   )
-                ]),
-                _vm._v(" "),
-                _c("hr", { staticClass: "my-2 mx-4" })
+                ])
               ]
             ),
             _vm._v(" "),
@@ -50324,7 +50356,7 @@ var render = function() {
                   "div",
                   {
                     staticClass:
-                      "col-start-2 col-end-3 profile-picture rounded-full border-4 border-white cursor-pointer overflow-hidden"
+                      "col-start-2 col-end-3 main-profile-picture rounded-full border-4 border-white cursor-pointer overflow-hidden"
                   },
                   [
                     _vm.$page.user.profile_photo_url
@@ -50514,6 +50546,108 @@ var render = function() {
           )
         ])
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container flex m-xcenter" }, [
+      _c("div", { staticClass: "w-2/5 mr-4" }, [
+        _c("div", { staticClass: "my-4 p-4 bg-white rounded-lg shadow" }, [
+          _c("h2", { staticClass: "mb-2 font-bold text-xl" }, [
+            _vm._v("Intro")
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "py-1 hover:bg-gray-300 bg-gray-200 font-semibold rounded-lg w-full"
+            },
+            [_vm._v("Modifier les infos")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-4 p-4 bg-white rounded-lg shadow" }, [
+          _c("div", { staticClass: "flex justify-between items-center mb-2" }, [
+            _c("h2", { staticClass: "font-bold text-xl" }, [_vm._v("Photos")]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass:
+                  "p-2 rounded-lg text-lg text-blue-600 hover:bg-gray-200",
+                attrs: { href: "#" }
+              },
+              [_vm._v("Toutes les photos")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my-4 p-4 bg-white rounded-lg shadow" }, [
+          _c("div", { staticClass: "flex justify-between items-center mb-2" }, [
+            _c("h2", { staticClass: "font-bold text-xl" }, [_vm._v("Amis")]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass:
+                  "p-2 rounded-lg text-lg text-blue-600 hover:bg-gray-200",
+                attrs: { href: "#" }
+              },
+              [_vm._v("Toutes les amis")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "w-3/5" },
+        [
+          _c("div", { staticClass: "my-4 p-2 bg-white rounded-lg shadow" }, [
+            _c("div", { staticClass: "flex m-4" }, [
+              _c("img", {
+                staticClass: "profile-picture rounded-full mr-3",
+                attrs: { src: _vm.$page.user.profile_photo_url, alt: "" }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "bg-gray-100 rounded-full w-full text-left pl-4",
+                  on: {
+                    click: function($event) {
+                      _vm.modalData = true
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "Que voulez-vous dire, " +
+                      _vm._s(_vm.$page.user.name) +
+                      " ?"
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.publications, function(publication, index) {
+            return _c(
+              "div",
+              { key: index, staticClass: "w-full" },
+              [
+                _c("publication-card", {
+                  attrs: {
+                    publication: _vm.publications[index],
+                    user: _vm.$page.user
+                  }
+                })
+              ],
+              1
+            )
+          })
+        ],
+        2
+      )
     ])
   ])
 }

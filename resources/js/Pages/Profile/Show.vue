@@ -5,7 +5,7 @@
                 <div class="cover-picture flex items-end bg-gray-100 rounded-b-lg"><!-- couverture -->
                     
                     <div class="grid grid-cols-3 justify-items-center items-end h-40 w-full bg-gradient-to-t from-gray-500 via-gray-100 to-gray-100 rounded-b-lg">
-                        <div class="col-start-2 col-end-3 profile-picture rounded-full border-4 border-white cursor-pointer overflow-hidden">
+                        <div class="col-start-2 col-end-3 main-profile-picture rounded-full border-4 border-white cursor-pointer overflow-hidden">
                             <img class="rounded-full overflow-hidden" v-if="$page.user.profile_photo_url" src="/img/placeholder-profile.png" alt="photo de profile">
                         </div>
                         <button class="col-start-3 col-end-3 font-semibold bg-gray-100 rounded p-2 m-5">Ajouter une photo de couverture</button>
@@ -49,18 +49,54 @@
                 </nav>
             </div>
         </div>
+        <div class="container flex m-xcenter">
+            <div class="w-2/5 mr-4">
+                <div class="my-4 p-4 bg-white rounded-lg shadow">
+                    <h2 class="mb-2 font-bold text-xl">Intro</h2>
+                    <button class="py-1 hover:bg-gray-300 bg-gray-200 font-semibold rounded-lg w-full">Modifier les infos</button>
+                </div>
+                <div class="my-4 p-4 bg-white rounded-lg shadow">
+                    <div class="flex justify-between items-center mb-2">
+                        <h2 class="font-bold text-xl">Photos</h2>
+                        <a href="#" class="p-2 rounded-lg text-lg text-blue-600 hover:bg-gray-200">Toutes les photos</a>
+                    </div>
+                </div>
+                <div class="my-4 p-4 bg-white rounded-lg shadow">
+                    <div class="flex justify-between items-center mb-2">
+                        <h2 class="font-bold text-xl">Amis</h2>
+                        <a href="#" class="p-2 rounded-lg text-lg text-blue-600 hover:bg-gray-200">Toutes les amis</a>
+                    </div>
+                </div>
+            </div>
+            <div class="w-3/5">
+                <div class="my-4 p-2 bg-white rounded-lg shadow">
+                    <div class="flex m-4">
+                        <img class="profile-picture rounded-full mr-3" :src="$page.user.profile_photo_url" alt="">
+                        <button class="bg-gray-100 rounded-full w-full text-left pl-4" @click='modalData = true'>Que voulez-vous dire, {{ $page.user.name }} ?</button>
+                    </div>
+                </div>
+                <div class="w-full" v-for="(publication, index) in publications" :key="index">
+                    <publication-card :publication="publications[index]" :user="$page.user"></publication-card>
+                </div>
+            </div>
+        </div>
     </app-layout>
 </template>
 
 <script>
     import AppLayout from '@/Layouts/AppLayout';
+    import PublicationCard from '@/Components/PublicationCard';
+
 
 export default {
     components: {
-        AppLayout
+        AppLayout,
+        PublicationCard
+
     }, 
     props: {
-        csrf_token: String
+        csrf_token: String,
+        publications: Array
     },
     data() {
         return {
@@ -94,8 +130,14 @@ export default {
     .cover-picture {
         height: 350px;
     }
-    .profile-picture {
+    .main-profile-picture {
         width: 168px;
         height: 168px;
+    }
+    .profile-picture {
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+        min-height: 40px;
     }
 </style>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Publication;
 use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
@@ -11,8 +12,10 @@ class UserController extends Controller
 {
     public function show($id)
     {
+        $publications = Publication::where('user_id', $id)->orderBy("created_at", "DESC")->get();
         return Inertia::render('Profile/Show', [
-            'csrf_token' => csrf_token()
+            'csrf_token' => csrf_token(),
+            'publications' => $publications
         ]);
     }
 
