@@ -39,7 +39,8 @@
             <hr class="my-2">
 
             <div class="flex">
-                <div class="btn-actions font-semibold text-gray-500 flex-1 text-center hover:bg-gray-100 rounded cursor-pointer">J'aime</div>
+                <div v-if="!liked" class="btn-actions font-semibold text-gray-500 flex-1 text-center hover:bg-gray-100 rounded cursor-pointer" @click.prevent="like(publication.id)">J'aime</div>
+                <div v-if="liked" class="btn-actions font-semibold text-blue-500 flex-1 text-center hover:bg-gray-100 rounded cursor-pointer" @click.prevent="unlike(publication.id)">J'aime</div>
                 <div class="btn-actions font-semibold text-gray-500 flex-1 text-center hover:bg-gray-100 rounded cursor-pointer">Commenter</div>
                 <div class="btn-actions font-semibold text-gray-500 flex-1 text-center hover:bg-gray-100 rounded cursor-pointer">Partager</div>
             </div>
@@ -51,10 +52,25 @@
 export default {
     props: {
         user: Object,
-        publication: Object
+        publication: Object,
+        liked: Boolean
     },
-    mounted() {
-        //console.log(this.$props.publication);
+    methods: {
+        like(id) {
+            this.$inertia.put('/like', {
+                _token: this.$props.csrf_token,
+                user: this.$page.user.id,
+                publication: id
+            })
+        },
+        unlike(id) {
+            this.$inertia.put('/unlike', {
+                _token: this.$props.csrf_token,
+                user: this.$page.user.id,
+                publication: id
+            })
+        },
+        
     }
 }
 </script>

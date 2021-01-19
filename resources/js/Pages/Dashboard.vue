@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="w-full" v-for="(publication, index) in publications" :key="index">
-                    <publication-card :publication="publications[index]" :user="users[publications[index].user_id-1]"></publication-card>
+                    <publication-card :publication="publications[index]" :user="users[publications[index].user_id-1]"  :liked="publication.liked == true ? true : false"></publication-card>
                 </div>
             </div> 
         </main>
@@ -32,19 +32,18 @@
         props: {
             publications: Array,
             users: Array,
-            csrf_token: String
+            csrf_token: String,
+            likes: Array
         },
 
         data() {
             return {
                 modalData: false,
+                like: []
             }
         },
 
         mounted() {
-            // console.log('publications: ', this.$props.publications)
-            // console.log('users: ', this.$props.users)
-            
         },
         methods: {
             /* testm() {

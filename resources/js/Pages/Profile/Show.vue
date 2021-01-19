@@ -1,5 +1,5 @@
 <template>
-    <app-layout>
+    <app-layout :csrf_token="csrf_token" :modal="modalData" @openPublicationModal="modalData = true" @close="modalData = false">
         <div class="banner bg-white shadow"><!-- banner -->
             <div class="container h-full m-xcenter">
                 <div class="cover-picture flex items-end bg-gray-100 rounded-b-lg"><!-- couverture -->
@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="text-center">
-                    <h1 class="font-bold text-4xl my-3">{{ $page.user.name }}</h1><!-- name -->
+                    <h1 class="font-bold text-4xl my-3">{{ $page.user.firstname + ' ' + $page.user.name }}</h1><!-- name -->
                     <p v-if="$page.user.bio && !editBio">{{ $page.user.bio }}</p>
                     <a v-if="!$page.user.bio && !editBio" class="text-blue-700 hover:underline" href="#" @click.prevent="editBio = true">Ajouter une bio</a>
                     <a v-if="$page.user.bio && !editBio" class="text-blue-700 hover:underline" href="#" @click.prevent="editBio = true">Modifier</a>
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class="w-full" v-for="(publication, index) in publications" :key="index">
-                    <publication-card :publication="publications[index]" :user="$page.user"></publication-card>
+                    <publication-card :publication="publications[index]" :user="$page.user" :liked="publication.liked == true ? true : false"></publication-card>
                 </div>
             </div>
         </div>
@@ -102,8 +102,12 @@ export default {
         return {
             editBio: false,
             bio: this.$page.user.bio || "",
-            characterMax: 101
+            characterMax: 101,
+            modalData: false
         }
+    },
+    mounted() {
+        
     },
     methods: {
         updateBio() {

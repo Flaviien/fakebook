@@ -12,9 +12,22 @@ class UserController extends Controller
 {
     public function show($id)
     {
+        $user = User::where('id', $id)->first();
         $publications = Publication::where('user_id', $id)->orderBy("created_at", "DESC")->get();
+
+        foreach ($publications as $publication) {
+            foreach ($publication->likes_users->all() as $userWhoLikeThis) {
+                if ($userWhoLikeThis->id == $id) {
+                    $publication->liked = true;
+                } else {
+                    $publication->liked = false;
+                }
+            }
+        }
+
+        // dump($publications);
+
         return Inertia::render('Profile/Show', [
-            'csrf_token' => csrf_token(),
             'publications' => $publications
         ]);
     }

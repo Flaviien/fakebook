@@ -21,4 +21,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
     Route::put('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
     Route::post('/publication/store', [PublicationController::class, 'store'])->name('publication.store');
+    Route::put('/like', [PublicationController::class, 'like'])->name('publication.like');
+    Route::put('/unlike', [PublicationController::class, 'unlike'])->name('publication.unlike');
 });

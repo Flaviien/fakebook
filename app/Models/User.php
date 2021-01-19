@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Publication::class);
     }
+
+    public function likes_publications()
+    {
+        return $this->belongsToMany(Publication::class, 'publication_users');
+    }
 }

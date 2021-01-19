@@ -14,4 +14,9 @@ class Publication extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function likes_users()
+    {
+        return $this->belongsToMany(User::class, 'publication_users');
+    }
 }

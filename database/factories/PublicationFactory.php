@@ -23,7 +23,7 @@ class PublicationFactory extends Factory
     {
         return [
             'content' => $this->faker->text,
-            'likes' => $this->faker->randomDigit
+            'likes' => 0
         ];
     }
 }
